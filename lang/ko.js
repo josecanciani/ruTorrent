@@ -6,7 +6,6 @@
 
 var theUILang =
 {
- kbs				: "kB/s",
  General			: "일반",
  Downloads			: "다운로드",
  Connection			: "연결",
@@ -83,11 +82,11 @@ var theUILang =
  Logger 			: "로그",
  s				: "s", // part of "KB/s"
  bytes				: "bytes",
- KB				: "KB",
- MB				: "MB",
- GB				: "GB",
- TB				: "TB",
- PB				: "PB",
+ KB				: "KiB",
+ MB				: "MiB",
+ GB				: "GiB",
+ TB				: "TiB",
+ PB				: "PiB",
  Loading			: "불러오는 중...",
  Torrent_file			: "토렌트 파일",
  Torrent_URL			: "토렌트 URL",
@@ -272,5 +271,7 @@ var theUILang =
  Recreate_files 		: "Queue files recreation",
  Address			: "주소",
  PeerDL 			: "피어 DL",
- PeerDownloaded 		: "피어 다운로드함"
+ PeerDownloaded 		: "피어 다운로드함",
+ Save_path			: "Save path",
+ registerMagnet			: "Try to register magnet protocol handler at start"
 };

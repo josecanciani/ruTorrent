@@ -1,8 +1,8 @@
 <?php
 
-class WhatCDAccount extends commonAccount
+class GazelleGamesAccount extends commonAccount
 {
-	public $url = "https://what.cd";
+	public $url = "https://gazellegames.net";
 
 	protected function isOK($client)
 	{

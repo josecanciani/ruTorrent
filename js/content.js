@@ -105,7 +105,7 @@ function makeContent()
 				'</span>'+				
 				'<label>'+theUILang.Label+':</label><input type="text" id="tadd_label" name="tadd_label" class="TextboxLarge" /><select id="tadd_label_select"></select><br/>'+
 				'<hr/>'+
-				'<label>'+theUILang.Torrent_file+':</label><input type="file" multiple="multiple" name="torrent_file[]" id="torrent_file" accept="application/x-bittorrent" class="TextboxLarge"/><br/>'+
+				'<label>'+theUILang.Torrent_file+':</label><input type="file" multiple="multiple" name="torrent_file[]" id="torrent_file" accept=".torrent,application/x-bittorrent" class="TextboxLarge"/><br/>'+
 				'<label>&nbsp;</label><input type="submit" value="'+theUILang.add_button+'" id="add_button" class="Button" /><br/>'+
 			'</form>'+
 			'<hr/>'+
@@ -208,7 +208,6 @@ function makeContent()
 		true);
 	theDialogManager.make("dlgHelp",theUILang.Help,
 		'<div class="content">'+
-			'<center>'+
 				'<table width=100% border=0>'+
 					'<tr><td><strong>F1</strong></td><td>'+theUILang.This_screen+'</td></tr>'+
 					'<tr><td><strong><strong>Ctrl-F1</strong></td><td><a href="javascript://void();" onclick="theDialogManager.toggle(\'dlgAbout\'); return(false);">'+theUILang.About_program+'</a></td></tr>'+
@@ -221,7 +220,6 @@ function makeContent()
 					'<tr><td><strong><strong>Ctrl-A</strong></td><td>'+theUILang.Select_all+'</td></tr>'+
 					'<tr><td><strong><strong>Ctrl-Z</strong></td><td>'+theUILang.Deselect_all+'</td></tr>'+
 				'</table>'+
-			'</center>'+
 		'</div>');
 	theDialogManager.make("dlgAbout","ruTorrent v"+theWebUI.version,
 		'<div class="content"> <strong>'+theUILang.Developers+'</strong>:<br/><br/>'+
@@ -240,6 +238,10 @@ function makeContent()
 		'<div class="aright buttons-list"><input type="button" class="OK Button" value="'+theUILang.ok+'" onclick="theWebUI.createLabel();theDialogManager.hide(\'dlgLabel\');return(false);" />'+
 			'<input type="button" class="Cancel Button" value="'+theUILang.Cancel+'"/></div>',
 		true);
+	theDialogManager.setHandler('dlgLabel','afterShow',function()
+	{
+		setTimeout(function(){$("#txtLabel").off('focus').on('focus',function() { $(this).select(); } ).focus();}, 0);
+	});
 	theDialogManager.make("yesnoDlg","",
 		'<div class="content" id="yesnoDlg-content"></div>'+
 		'<div id="yesnoDlg-buttons" class="aright buttons-list"><input type="button" class="OK Button" value="'+theUILang.ok+'" id="yesnoOK">'+
@@ -332,6 +334,9 @@ function makeContent()
 					"</div>"+
 					"<div class=\"op100l\"><input type=\"checkbox\" id=\"webui.show_labelsize\"/>"+
 						"<label for=\"webui.show_labelsize\" id=\"lbl_webui.show_labelsize\" >"+theUILang.showLabelSize+"</label>"+
+					"</div>"+
+					"<div class=\"op100l\"><input type=\"checkbox\" id=\"webui.register_magnet\"/>"+
+						"<label for=\"webui.register_magnet\" id=\"lbl_webui.register_magnet\" >"+theUILang.registerMagnet+"</label>"+
 					"</div>"+
 					"<div class=\"op100l\">"+
 						"<label for=\"webui.retry_on_error\">"+theUILang.retryOnErrorTitle+":</label>&nbsp;"+
@@ -433,11 +438,11 @@ function makeContent()
 					"<legend>"+theUILang.Bandwidth_Limiting+"</legend>"+
 					"<table>"+
 						"<tr>"+
-							"<td>"+theUILang.Global_max_upl+" ("+theUILang.kbs+"): [0: "+theUILang.unlimited+"]</td>"+
+							"<td>"+theUILang.Global_max_upl+" ("+theUILang.KB + "/" + theUILang.s+"): [0: "+theUILang.unlimited+"]</td>"+
 							"<td class=\"alr\"><input type=\"text\" id=\"upload_rate\" class=\"Textbox num\" maxlength=\"6\" /></td>"+
 						"</tr>"+
 						"<tr>"+
-							"<td>"+theUILang.Glob_max_downl+" ("+theUILang.kbs+"): [0: "+theUILang.unlimited+"]</td>"+
+							"<td>"+theUILang.Glob_max_downl+" ("+theUILang.KB + "/" + theUILang.s+"): [0: "+theUILang.unlimited+"]</td>"+
 							"<td class=\"alr\"><input type=\"text\" id=\"download_rate\" class=\"Textbox num\" maxlength=\"6\" /></td>"+
 						"</tr>"+
 					"</table>"+
@@ -893,7 +898,7 @@ function correctContent()
 			"get_preload_min_size"	:	{ name: "pieces.preload.min_size", prm: 0 },
 			"get_preload_required_rate"	:	{ name: "pieces.preload.min_rate", prm: 0 },
 			"get_preload_type"	:	{ name: "pieces.preload.type", prm: 0 },
-			"get_proxy_address"	:	{ name: "network.http.proxy_address", prm: 0 },
+			"get_proxy_address"	:	{ name: "network.proxy_address", prm: 0 },
 			"get_receive_buffer_size"	:	{ name: "network.receive_buffer.size", prm: 0 },
 			"get_safe_sync"		:	{ name: "pieces.sync.always_safe", prm: 0 },
 			"get_scgi_dont_route"	:	{ name: "network.scgi.dont_route", prm: 0 },
@@ -919,7 +924,7 @@ function correctContent()
 			"get_xmlrpc_size_limit"	:	{ name: "network.xmlrpc.size_limit", prm: 0 },
 			"http_cacert"		:	{ name: "network.http.cacert", prm: 0 },
 			"http_capath"		:	{ name: "network.http.capath", prm: 0 },
-			"http_proxy"		:	{ name: "network.proxy_address", prm: 0 },
+			"http_proxy"		:	{ name: "network.http.proxy_address", prm: 0 },
 			"load_raw"		:	{ name: "load.raw", prm: 1 },
 			"load_raw_start"	:	{ name: "load.raw_start", prm: 1 },
 			"load_raw_verbose"	:	{ name: "load.raw_verbose", prm: 1 },
@@ -975,7 +980,7 @@ function correctContent()
 			"set_preload_min_size"	:	{ name: "pieces.preload.min_size.set", prm: 1 },
 			"set_preload_required_rate"	:	{ name: "pieces.preload.min_rate.set", prm: 1 },
 			"set_preload_type"	:	{ name: "pieces.preload.type.set", prm: 1 },
-			"set_proxy_address"	:	{ name: "network.http.proxy_address.set", prm: 1 },
+			"set_proxy_address"	:	{ name: "network.proxy_address.set", prm: 1 },
 			"set_receive_buffer_size"	:	{ name: "network.receive_buffer.size.set", prm: 1 },
 			"set_safe_sync"		:	{ name: "pieces.sync.always_safe.set", prm: 1 },
 			"set_scgi_dont_route"	:	{ name: "network.scgi.dont_route.set", prm: 1 },

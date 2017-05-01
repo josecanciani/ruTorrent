@@ -8,7 +8,6 @@
 
 var theUILang =
 {
- kbs				: "kB/s",
  General			: "Generelt",
  Downloads			: "Downloads",
  Connection			: "Forbindelse",
@@ -85,11 +84,11 @@ var theUILang =
  Logger 			: "Log",
  s				: "s", // part of "KB/s"
  bytes				: "bytes",
- KB				: "KB",
- MB				: "MB",
- GB				: "GB",
- TB				: "TB",
- PB				: "PB",
+ KB				: "KiB",
+ MB				: "MiB",
+ GB				: "GiB",
+ TB				: "TiB",
+ PB				: "PiB",
  Loading			: "Indlæser...",
  Torrent_file			: "Torrent fil",
  Torrent_URL			: "Torrent URL",
@@ -274,5 +273,7 @@ var theUILang =
  Recreate_files 		: "Queue files recreation",
  Address			: "Adresse",
  PeerDL 			: "Peer DL",
- PeerDownloaded 		: "Peer Downloaded"
+ PeerDownloaded 		: "Peer Downloaded",
+ Save_path			: "Save path",
+ registerMagnet			: "Try to register magnet protocol handler at start"
 };

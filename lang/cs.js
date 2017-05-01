@@ -8,7 +8,6 @@
 
 var theUILang =
 {
- kbs				: "kB/s",
  General			: "Hlavní",
  Downloads			: "Stahování",
  Connection			: "Připojení",
@@ -85,11 +84,11 @@ var theUILang =
  Logger 			: "Záznamy",
  s				: "s",
  bytes				: "bytů",
- KB				: "KB",
- MB				: "MB",
- GB				: "GB",
- TB				: "TB",
- PB				: "PB",
+ KB				: "KiB",
+ MB				: "MiB",
+ GB				: "GiB",
+ TB				: "TiB",
+ PB				: "PiB",
  Loading			: "Načítám...",
  Torrent_file			: "Torrent soubor",
  Torrent_URL			: "Torrent URL",
@@ -274,5 +273,7 @@ var theUILang =
  Recreate_files 		: "Queue files recreation",
  Address			: "Address",
  PeerDL 			: "Peer DL",
- PeerDownloaded 		: "Peer Downloaded"
+ PeerDownloaded 		: "Peer Downloaded",
+ Save_path			: "Save path",
+ registerMagnet			: "Try to register magnet protocol handler at start"
 };

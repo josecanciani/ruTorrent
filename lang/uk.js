@@ -8,7 +8,6 @@
 
 var theUILang =
 {
- kbs				: "кб/с",
  General			: "Загальне",
  Downloads			: "Завантаження",
  Connection			: "З’єднання",
@@ -85,11 +84,11 @@ var theUILang =
  Logger 			: "Журнал",
  s				: "с", // part of "KB/s"
  bytes				: "байт",
- KB				: "кб",
- MB				: "Мб",
- GB				: "Гб",
- TB				: "Тб",
- PB				: "Пб",
+ KB				: "КiБ",
+ MB				: "МiБ",
+ GB				: "ГiБ",
+ TB				: "ТiБ",
+ PB				: "ПiБ",
  Loading			: "Триває завантаження…",
  Torrent_file			: "Файл торента",
  Torrent_URL			: "URL торента",
@@ -274,5 +273,7 @@ var theUILang =
  Recreate_files 		: "Виконати повторне створення файлів у черзі",
  Address			: "Адреса",
  PeerDL 			: "Швидкість піра",
- PeerDownloaded 		: "Завантажено піром"
+ PeerDownloaded 		: "Завантажено піром",
+ Save_path			: "Збережено у",
+ registerMagnet			: "Try to register magnet protocol handler at start"
 };

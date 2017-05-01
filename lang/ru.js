@@ -8,7 +8,6 @@
 
 var theUILang =
 {
- kbs				: "кБ/с",
  General			: "Общее",
  Downloads			: "Закачки",
  Connection			: "Соединение",
@@ -274,5 +273,7 @@ var theUILang =
  Recreate_files 		: "Воссоздать файлы торрента",
  Address			: "Адрес",
  PeerDL 			: "Скорость пира",
- PeerDownloaded 		: "Скачано пиром"
+ PeerDownloaded 		: "Скачано пиром",
+ Save_path			: "Сохранено в",
+ registerMagnet			: "Регистрировать magnet протокол на старте"
 };

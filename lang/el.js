@@ -6,7 +6,6 @@
 
 var theUILang =
 {
- kbs				: "kB/s",
  General			: "Γενικά",
  Downloads			: "Λήψεις",
  Connection			: "Σύνδεση",
@@ -83,11 +82,11 @@ var theUILang =
  Logger 			: "Καταγραφέας",
  s				: "s", // part of "KB/s"
  bytes				: "bytes",
- KB				: "KB",
- MB				: "MB",
- GB				: "GB",
- TB				: "TB",
- PB				: "PB",
+ KB				: "KiB",
+ MB				: "MiB",
+ GB				: "GiB",
+ TB				: "TiB",
+ PB				: "PiB",
  Loading			: "Φόρτωση...",
  Torrent_file			: "Αρχείο Torrent",
  Torrent_URL			: "URL του Torrent",
@@ -272,5 +271,7 @@ var theUILang =
  Recreate_files 		: "Δρομολόγηση επαναδημιουργίας αρχείων",
  Address			: "Διεύθυνση",
  PeerDL 			: "DL χρήστη",
- PeerDownloaded 		: "Ο χρήστης έλαβε"
+ PeerDownloaded 		: "Ο χρήστης έλαβε",
+ Save_path			: "Τοποθεσία αποθήκευσης",
+ registerMagnet			: "Προσπάθεια καταχώρησης του πρωτόκολλου magnet κατά την εκκίνηση"
 };

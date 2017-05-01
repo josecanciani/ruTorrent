@@ -8,7 +8,6 @@
 
 var theUILang =
 {
- kbs				: "KB/s",
  General			: "Galvenā",
  Downloads			: "Lejupielādes",
  Connection			: "Savienojumi",
@@ -85,11 +84,11 @@ var theUILang =
  Logger 			: "Žurnāls",
  s				: "s", // part of "KB/s"
  bytes				: "baiti",
- KB				: "KB",
- MB				: "MB",
- GB				: "GB",
- TB				: "TB",
- PB				: "PB",
+ KB				: "KiB",
+ MB				: "MiB",
+ GB				: "GiB",
+ TB				: "TiB",
+ PB				: "PiB",
  Loading			: "Ielādē...",
  Torrent_file			: "Torenta fails",
  Torrent_URL			: "Torenta adrese",
@@ -274,5 +273,7 @@ var theUILang =
  Recreate_files 		: "Queue files recreation",
  Address			: "Address",
  PeerDL 			: "Peer DL",
- PeerDownloaded 		: "Peer Downloaded"
+ PeerDownloaded 		: "Peer Downloaded",
+ Save_path			: "Save path",
+ registerMagnet			: "Try to register magnet protocol handler at start"
 };
