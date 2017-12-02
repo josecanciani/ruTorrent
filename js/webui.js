@@ -5,7 +5,7 @@
 
 var theWebUI = 
 {
-        version: "3.7",
+        version: "3.8",
 	tables:
 	{
 		trt: 
@@ -308,7 +308,7 @@ var theWebUI =
 
 	getPlugins: function()
 	{
-		this.request("?action=getplugins", [this.getUISettings, this]);
+		this.requestWithoutTimeout("?action=getplugins", [this.getUISettings, this]);
 	},
 
 	getUISettings: function()
@@ -325,7 +325,7 @@ var theWebUI =
 		correctContent();
 		this.updateServerTime();
 		window.setInterval( this.updateServerTime, 1000 );
-		this.request("?action=getuisettings", [this.initFinish, this]);
+		this.requestWithoutTimeout("?action=getuisettings", [this.initFinish, this]);
 	},
 
 	initFinish: function(data)
@@ -2247,7 +2247,7 @@ var theWebUI =
 			$("#pe").text(d.peers_actual + " " + theUILang.of + " " + d.peers_all + " " + theUILang.connected);
 			$("#et").text(theConverter.time(Math.floor((new Date().getTime()-theWebUI.deltaTime)/1000-iv(d.state_changed)),true));
 			$("#wa").text(theConverter.bytes(d.skip_total,2));
-	        	$("#bf").text(d.save_path);
+	        	$("#bf").text(d.base_path);
 	        	$("#co").text(theConverter.date(iv(d.created)+theWebUI.deltaTime/1000));
 			$("#tu").text(	$type(this.trackers[this.dID]) && $type(this.trackers[this.dID][d.tracker_focus]) ? this.trackers[this.dID][d.tracker_focus].name : '');
 	        	$("#hs").text(this.dID.substring(0,40));
@@ -2301,10 +2301,10 @@ var theWebUI =
 		if(document.title!=newTitle)
 			document.title = newTitle;
 	        $("#stup_speed").text(ul);
-	        $("#stup_limit").text((self.total.rateUL>0 && self.total.rateUL<100*1024*1024) ? theConverter.speed(self.total.rateUL) : theUILang.no);
+	        $("#stup_limit").text((self.total.rateUL>0 && self.total.rateUL<327625*1024) ? theConverter.speed(self.total.rateUL) : theUILang.no);
 	        $("#stup_total").text(theConverter.bytes(self.total.UL));
 	        $("#stdown_speed").text(dl);
-	        $("#stdown_limit").text((self.total.rateDL>0 && self.total.rateDL<100*1024*1024) ? theConverter.speed(self.total.rateDL) : theUILang.no);
+	        $("#stdown_limit").text((self.total.rateDL>0 && self.total.rateDL<327625*1024) ? theConverter.speed(self.total.rateDL) : theUILang.no);
 	        $("#stdown_total").text(theConverter.bytes(self.total.DL));
 	},
 
@@ -2324,10 +2324,10 @@ var theWebUI =
 	        {
 	                theContextMenu.clear();
 	                var speeds=theWebUI.settings["webui.speedlistdl"].split(",");
-	                if(theWebUI.total.rateDL<=0 || theWebUI.total.rateDL>=100*1024*1024)
-	                	theContextMenu.add([CMENU_SEL,theUILang.unlimited,"theWebUI.setDLRate(100*1024*1024)"]);
+	                if(theWebUI.total.rateDL<=0 || theWebUI.total.rateDL>=327625*1024)
+	                	theContextMenu.add([CMENU_SEL,theUILang.unlimited,"theWebUI.setDLRate(327625*1024)"]);
 			else	                
-		                theContextMenu.add([theUILang.unlimited,"theWebUI.setDLRate(100*1024*1024)"]);
+		                theContextMenu.add([theUILang.unlimited,"theWebUI.setDLRate(327625*1024)"]);
 			theContextMenu.add([CMENU_SEP]);
 	                for(var i=0; i<speeds.length; i++)
 	                {
@@ -2348,10 +2348,10 @@ var theWebUI =
 	        {
 	                theContextMenu.clear();
 	                var speeds=theWebUI.settings["webui.speedlistul"].split(",");
-	                if(theWebUI.total.rateUL<=0 || theWebUI.total.rateUL>=100*1024*1024)
-	                	theContextMenu.add([CMENU_SEL,theUILang.unlimited,"theWebUI.setULRate(100*1024*1024)"]);
+	                if(theWebUI.total.rateUL<=0 || theWebUI.total.rateUL>=327625*1024)
+	                	theContextMenu.add([CMENU_SEL,theUILang.unlimited,"theWebUI.setULRate(327625*1024)"]);
 			else	                
-		                theContextMenu.add([theUILang.unlimited,"theWebUI.setULRate(100*1024*1024)"]);
+		                theContextMenu.add([theUILang.unlimited,"theWebUI.setULRate(327625*1024)"]);
 			theContextMenu.add([CMENU_SEP]);
 	                for(var i=0; i<speeds.length; i++)
 	                {

@@ -386,7 +386,7 @@ dxSTable.prototype.resizeColumn = function()
 			(browser.isAppleWebKit || browser.isKonqueror || browser.isIE8up) &&
 			this.tBody.rows.length>0)
 		{
-			if((this.tBody.rows[0].cells[i].width!=w) && (w>=4))
+			if((this.tBody.rows[0].cells[i].width || browser.isSafari) && (this.tBody.rows[0].cells[i].width!=w) && (w>=4))
 			{
 				this.tBody.rows[0].cells[i].width=w;
 				needCallHandler = true;

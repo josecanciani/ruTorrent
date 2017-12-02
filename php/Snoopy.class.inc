@@ -297,7 +297,7 @@ class Snoopy
 	{
 		foreach( $this->headers as $i=>$header )
 			if(preg_match_all("/^Content-Disposition:.*(\s|;)filename=\"(.*)\.torrent\"/i",$header,$matches) && (count($matches)>2))
-				return( str_replace( '/', '_', $matches[2][0].".torrent" ) );
+				return( str_replace( '/', '_', rawurldecode($matches[2][0]).".torrent" ) );
 		return(false);	
 	}
 
@@ -480,7 +480,7 @@ class Snoopy
 		if(!empty($this->user) || !empty($this->pass))	
 			$headers[] = "Authorization: Basic ".base64_encode($this->user.":".$this->pass);
 
-		$cmdline_params = '-0';
+		$cmdline_params = '';
 		foreach( $headers as $header )
 			$cmdline_params .= " -H ".escapeshellarg($header);
 			  	                         
