@@ -1,3 +1,9 @@
+# ruTorrent fork
+
+This is my personal ruTorrent fork. It has the mobile plugin as a submodule.
+
+Clone as usual, then git submodule init and update.
+
 # ruTorrent
 
 ruTorrent is a front-end for the popular Bittorrent client [rtorrent](http://rakshasa.github.io/rtorrent).
